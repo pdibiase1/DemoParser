@@ -1,11 +1,17 @@
 package demo;
 
-import java.util.Random;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Demo 
 {
     private static HashMap<String, String[]> grammar = new HashMap<String, String[]>();
+    
+     public static String getRandElem(String[] arr) 
+    {
+        Random rand = new Random();
+        return arr[rand.nextInt(arr.length)];
+    }
 
     public static void setupGrammar()  //production rules
     {
@@ -79,12 +85,6 @@ public class Demo
         grammar.put("<adverb>", adv1);
     }
 
-    public static String getRandElem(String[] arr) 
-    {
-        Random rand = new Random();
-        return arr[rand.nextInt(arr.length)];
-    }
-
     public static String produce(String input) 
     {
         String output = "";
@@ -100,7 +100,8 @@ public class Demo
             {
                 output += newVar;
             }
-            else {
+            else 
+            {
                 input = newVar + input;
             }
         }
