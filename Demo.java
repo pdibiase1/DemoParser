@@ -7,19 +7,19 @@ public class Demo
 {
     private static HashMap<String, String[]> grammar = new HashMap<String, String[]>();
     
-     public static String getRandElem(String[] arr) 
+     public static String getRandomElem(String[] arr) //rng 
     {
         Random rand = new Random();
         return arr[rand.nextInt(arr.length)];
     }
 
-    public static void setupGrammar()  //production rules
+    public static void Grammar()  //production rules
     {
         // nouns
         
         String[] n1 = {"<person>", "<place>", "<thing>", "<idea>"};
-        String[] n2 = {"<name>", "<article><occupation>", "<article><adjective><occupation>"}; // person
-        String[] n3 = {"<general>", "<adjective><general>", "<article><specific>", "<article><adjective><specific>"}; // idea
+        String[] n2 = {"<name>", "<article><occupation>", "<article><adjective><occupation>", "<name><article><occupation>"}; // person
+        String[] n3 = {"<general>", "<adjective><general>","<article><adjective><specific>", "<article><specific>"}; // idea
         String[] n4 = {"<article><thing noun>", "<article><adjective><thing noun>"}; // thing
         String[] n5 = {"<article><place noun>", "<article><adjective><place noun>"}; // place
         String[] n6 = {"Peter ", "Lucas "}; // name
@@ -85,17 +85,21 @@ public class Demo
         grammar.put("<adverb>", adv1);
     }
 
-    public static String produce(String input) 
+    public static String Parse(String input) 
     {
         String output = "";
+        
         while (input.contains("<") && input.contains(">")) 
         {
-            int varStart = input.indexOf("<");
-            int varFinish = input.indexOf(">");
-            String var = input.substring(varStart, varFinish + 1);
-            input = input.substring(varFinish + 1);
+            int start = input.indexOf("<");
+            int finish = input.indexOf(">");
+            
+            String var = input.substring(start, finish + 1);
+            
+            input = input.substring(finish + 1);
 
-            String newVar = getRandElem(grammar.get(var));
+            String newVar = getRandomElem(grammar.get(var));
+            
             if (!newVar.contains("<") && !newVar.contains(">")) 
             {
                 output += newVar;
@@ -111,7 +115,7 @@ public class Demo
 
     public static void main(String[] args) 
     {
-        setupGrammar();
-        System.out.println(produce("<noun><verb>"));
+        Grammar();
+        System.out.println(Parse("<noun><verb>"));
     }
 }
