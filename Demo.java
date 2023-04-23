@@ -21,13 +21,13 @@ public class Demo
         String[] n2 = {"<name>", "<article><occupation>", "<article><adjective><occupation>", "<name><article><occupation>"}; // person
         String[] n3 = {"<general>", "<adjective><general>","<article><adjective><specific>", "<article><specific>"}; // idea
         String[] n4 = {"<article><thing noun>", "<article><adjective><thing noun>"}; // thing
-        String[] n5 = {"<article><place noun>", "<article><adjective><place noun>"}; // place
+        String[] n5 = {"<article><place noun>", "<article><adjective><place noun>", "<place noun><article>"}; // place
         String[] n6 = {"Peter ", "Lucas "}; // name
         String[] n7 = {"lecture ", "baseball ", "college "}; // general
         String[] n8 = {"Catholic University of America "}; // exact location
         String[] n9 = {"mechanic ", "professor ", "wrestler "}; // job
         String[] n10 = {"desk ", "dog ", "chair ", "book ", " "}; // object 
-        String[] n11 = {"Duf ", "hospital ", "church ", "campus "}; // place 
+        String[] n11 = {"gym ", "beach ", "bank ", "campus "}; // place 
         String[] n12 = {"<noun>"}; // pred nom
         String[] n13 = {"<noun>"}; // direct object
 
@@ -53,7 +53,7 @@ public class Demo
         String[] v4 = {"<intrans verb>", "<intrans verb><adverb>"};
         String[] v5 = {"<link verb><pred nom>", "<link verb><pred adj>"};
         String[] v6 = {"was ", "seems ", "has ", "is ", "looks "}; // linking verbs
-        String[] v7 = {"borrows ", "gives ", "pay "}; // transitive verbs
+        String[] v7 = {"borrows ", "gives ", "brings "}; // transitive verbs
         String[] v8 = {"sleep ", "was sleeping ", "arrives ", "was arriving ", "appear ", "was appearing "}; // intran verbs
 
         grammar.put("<verb>", v1);
